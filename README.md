@@ -1,0 +1,2 @@
+# fastify_basic_restapi_mongo
+fastify_basic_restapi_mongo
