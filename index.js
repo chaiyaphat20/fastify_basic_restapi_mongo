@@ -9,16 +9,16 @@ const startApp = async () => {
     };
     const app = buildApp(appOptions);
     await app.listen(config.port, config.hostname);
-    // console.log(`app is listening on port ${config.port}`);
+    console.log(`app is listening on port ${config.port}`);
     await mongoose.connect(config.mongodb.uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false,
     });
-    // console.log("mongoConnect");
+    console.log("mongoConnect");
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 };
 

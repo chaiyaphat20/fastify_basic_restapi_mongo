@@ -1,6 +1,7 @@
 const userModel = require("../models/Users/Users");
 
 const getUsers = async (request, reply) => {
+  console.log("getUsers");
   const users = await userModel.getUsers();
   reply.send(users);
 };
@@ -24,9 +25,16 @@ const patchUser = async (request, reply) => {
 
 const deleteUser = async (request, reply) => {
   const { userId } = request.body;
-  console.log({userId})
+  console.log({ userId });
   const result = await userModel.deleteUser(userId);
   reply.send(result);
+};
+
+const postUserLogin = async (request, reply) => {
+  console.log("login");
+  const { username, password } = request.body;
+  const userToken = await userModel.loginUser(username, password);
+  return userToken;
 };
 
 module.exports = {
@@ -35,4 +43,5 @@ module.exports = {
   postUser,
   patchUser,
   deleteUser,
+  postUserLogin,
 };

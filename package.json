@@ -13,6 +13,7 @@
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "fastify": "^3.17.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.12"
   },
   "devDependencies": {

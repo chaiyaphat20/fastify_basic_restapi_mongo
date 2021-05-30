@@ -1,23 +1,28 @@
+###  CREATE USER 
 POST http://localhost:4000/users
 Content-Type: application/json
 
 {
-  "username":"1artart.81mile",
-  "password":"art123456",
+  "username":"goemon",
+  "password":"art12s3456",
   "name":"chaiyaphat",
   "surname":"supharak"
 }
 
-###
+
+###  GET ALL USER
 GET http://localhost:4000/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjMwOGQ5Y2FjNjI2MjU1OGJkNGYzNSIsInVzZXJuYW1lIjoiZ29lbW9uIiwiaWF0IjoxNjIyMzQ3MDI1LCJleHAiOjE2MjI0MDcwMjV9.SMcyrV_UNcaWe0kxsKddE2Mh1lHl2PI-Tn5Z1PSHzJQ
 
 
-###
+
+###  GET USER By ID
 GET http://localhost:4000/users/60b2918b75399124f01464dc
 Content-Type: application/json
 
-###
+
+### UPDATE USER By ID
 PATCH  http://localhost:4000/users
 Content-Type: application/json
 
@@ -29,10 +34,22 @@ Content-Type: application/json
   "surname":"new2020"
 }
 
-###
+
+### DELETE USER By ID
 DELETE  http://localhost:4000/users
 Content-Type: application/json
 
 {
   "userId":"60b2918b75399124f01464dc"
+}
+
+
+
+###  LOGIN
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+  "username":"goemon",
+  "password":"art12s3456"
 }
