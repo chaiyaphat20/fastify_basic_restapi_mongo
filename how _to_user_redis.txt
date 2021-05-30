@@ -1,0 +1,12 @@
+$ redis-cli
+$keys *
+result: 1) "getUsers"
+
+$get getUsers  **ดูdata ใน key getUsers
+result: "[{\"_id\":\"60b29083862e983dcc02e4b3\",\"username\":\"1xx1cxxcxcvcxvxcv1o10n.81mile\",\"password\":\"$2b$10$M/OV6/WNSeuUpT3khAWjM.PSIw5y3.Xq/TawV7PXaQ8y.KNHwkaNK\",\"name\":\"new12\",\"surname\":\"new2020\"},{\"_id\":\"60b301c4c1b2513f3c8cfab5\",\"username\":\"1artart.81mile\",\"password\":\"$2b$10$DZeXj9Dl4s6ilXI3B9HaAehkZsEj6/l9.dERYjxAH6dOP/xn7zKk.\",\"name\":\"chaiyaphat\",\"surname\":\"supharak\"},{\"_id\":\"60b308d9cac6262558bd4f35\",\"username\":\"goemon\",\"password\":\"$2b$10$yUDKCV8j5Eozi5gNj8Bg7eow5ZeyLiyKbK7V6v7S8WNxaNIUifrRG\",\"name\":\"chaiyaphat\",\"surname\":\"supharak\"}]"
+
+$ttl getUsers   ดู อายุที่เหลือ 
+result: (integer) -2  **ถ้าค่าติดลบคือหมดอายุ
+
+
+result (integer) 5991  **คือเวลาที่เหลือ

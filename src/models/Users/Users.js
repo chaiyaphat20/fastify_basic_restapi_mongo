@@ -1,5 +1,14 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const redis = require("redis");
+const { promisify } = require("util");
+
+const redisClient = redis.createClient(); //default localhost
+redisClient.on("error", (error) => {
+  console.error("redis error ->", error);
+});
+const redisGetAsync = promisify(redisClient.get).bind(redisClient)
+
 const config = require("../../config");
 const Users = require("./schema");
 
@@ -26,7 +35,17 @@ const createNewUser = async (docs = {}) => {
 };
 
 const getUsers = async (password) => {
+  const redisCacheKey = `getUsers`;
+  // const getUserInCache = await redisClient.get(redisCacheKey);
+  const getUserInCache = await redisGetAsync(redisCacheKey);
+  if (getUserInCache) {
+    console.log("getUserInCache ->", getUserInCache);
+    return JSON.parse(getUserInCache);
+  }
   const result = await Users.find();
+
+  //cache into Redis by 600 second or 10 minutes
+  redisClient.setex(redisCacheKey, 60 * 10, JSON.stringify(result));
   return result;
 };
 
